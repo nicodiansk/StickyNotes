@@ -30,28 +30,28 @@ class NotesViewModel @Inject constructor(
         getNotes(NoteOrder.Date(OrderType.Descending))
     }
 
-    fun onEvent(event: NoteEvent) {
+    fun onEvent(event: NotesEvent) {
         when (event) {
-            is NoteEvent.Order -> {
+            is NotesEvent.Order -> {
                 if (state.value.noteOrder::class == event::class &&
                     state.value.noteOrder.orderType == event.noteOrder.orderType
                 ) return
 
                 getNotes(event.noteOrder)
             }
-            is NoteEvent.DeleteNote -> {
+            is NotesEvent.DeleteNote -> {
                 viewModelScope.launch {
                     noteUseCases.deleteNote(event.note)
                     recentlyDeletedNote = event.note
                 }
             }
-            NoteEvent.RestoreNote -> {
+            NotesEvent.RestoreNote -> {
                 viewModelScope.launch {
                     noteUseCases.addNote(recentlyDeletedNote ?: return@launch)
                     recentlyDeletedNote = null
                 }
             }
-            NoteEvent.ToggleOrderSection -> {
+            NotesEvent.ToggleOrderSection -> {
                 _state.value =
                     state.value.copy(isOrderSectionVisible = !state.value.isOrderSectionVisible)
             }

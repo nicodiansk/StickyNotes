@@ -9,7 +9,9 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.nicodiansk.stickynotesapp.ui.theme.StickyNotesAppTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +19,7 @@ class MainActivity : ComponentActivity() {
             StickyNotesAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.onSecondary
+                    color = MaterialTheme.colors.background
                 ) {
                     DestinationsNavHost(navGraph = NavGraphs.root)
                 }
