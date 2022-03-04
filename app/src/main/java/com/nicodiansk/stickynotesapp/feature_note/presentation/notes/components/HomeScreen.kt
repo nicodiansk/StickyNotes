@@ -1,4 +1,4 @@
-package com.nicodiansk.stickynotesapp.presentation.home
+package com.nicodiansk.stickynotesapp.feature_note.presentation.notes
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

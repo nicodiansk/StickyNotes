@@ -1,4 +1,4 @@
-package com.nicodiansk.stickynotesapp.presentation.splash
+package com.nicodiansk.stickynotesapp.feature_note.presentation.splash
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.*
 import com.nicodiansk.stickynotesapp.R
-import com.nicodiansk.stickynotesapp.presentation.destinations.HomeScreenDestination
+import com.nicodiansk.stickynotesapp.feature_note.presentation.destinations.HomeScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -18,9 +18,12 @@ fun SplashScreen(navigator: DestinationsNavigator) {
         rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.splash_animation))
 
     val progress by animateLottieCompositionAsState(
-        composition = compositionResult.value
+        composition = compositionResult.value,
+        isPlaying = true,
+        iterations = 2,
+        speed = 1.0f
     )
-    LottieAnimation(
+   LottieAnimation(
         composition = compositionResult.value,
         progress = progress,
         modifier = Modifier.padding(all = 50.dp),
