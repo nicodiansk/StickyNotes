@@ -2,6 +2,7 @@ package com.nicodiansk.stickynotesapp.feature_note.presentation.splash.component
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -29,7 +30,8 @@ fun SplashScreen(navigator: DestinationsNavigator) {
         modifier = Modifier.padding(all = 50.dp),
     )
     if (progress == 1.0f) {
-        navigator.navigate(NotesScreenDestination)
+        LaunchedEffect(Unit){
+            navigator.navigate(NotesScreenDestination)
+        }
     }
-
 }
